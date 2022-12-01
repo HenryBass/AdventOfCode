@@ -1,0 +1,1 @@
+print(sum(map(lambda x:int((int(x)/3)-2),open('input.txt','r').read().split("\n")[:-1])))
