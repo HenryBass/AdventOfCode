@@ -1,29 +1,30 @@
 fn main() {
-    let input1 = 17985230;
-    let input2 = 9281649;
-    println!("tval: {0}", transform(13100, 7));
+    let input1 = 13316116;
+    let input2 = 13651422;
 
     let loop1 = findloopsize(input1);
-    println!("Loop Size Found: {0}", loop1);
+    println!("Loop Size Found: {}", loop1);
     let loop2 = findloopsize(input2);
-    println!("Loop Size Found: {0}", loop2);
-    findloopsize(input1);
+    println!("Loop Size Found: {}", loop2);
+    
+    let key1 = transform(loop2, input1);
+    let key2 = transform(loop1, input2);
+
+    if key1 == key2 {
+        println!("Key pair match, key is: {}", key1);
+    } else {
+        println!("No key match");
+    }
 }
 
 fn transform(loops: i64, subj: i64)-> i64 {
-    let mut val = 1;
-    for _i in 0..loops {
-        val = val * subj;
-        val = val % 20201227;
-    }
-    return val;
+    return ((subj % 20201227) * (subj % 20201227)) % 20201227;
 }
 
 fn findloopsize(pubkey: i64) -> i64 {
     let mut i = 0;
     let mut t = 0;
     while t != pubkey {
-        //println!("{}", i);
         i += 1;
         t = transform(i, 7);
     }
