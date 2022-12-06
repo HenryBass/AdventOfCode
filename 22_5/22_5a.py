@@ -12,11 +12,16 @@ for i in setup:
     for j in range(len(i)):
         if ord(i[j]) > 64 and ord(i[j]) < 91:
             spots[int(j/2)].append(i[j])
-            print(i[j], int(j/2))
 
 for i in instructions:
     i = i.split(" ")
     for j in range(int(i[1])):
-        spots[int(i[5])].append(spots[int(i[3])])
+        spots[int(i[5])-1].append(spots[int(i[3])-1].pop())
 
-print(spots)
+
+output = ""
+
+for i in spots:
+    output += i.pop()
+
+print(output)
