@@ -1,4 +1,4 @@
-inputf = open("input.txt", "r").read()[:-1].split("\n\n")
+inputf = open("input.txt", "r").read().split("\n\n")
 
 setup, instructions = inputf[0].split("\n")[:-1], inputf[1].split("\n")
 
@@ -30,8 +30,10 @@ for i in instructions:
 
 
 output = ""
-
 for i in spots:
-    output += i.pop()
+    try:
+        output += i[-1]
+    except:
+        output += " "
 
 print(output)
