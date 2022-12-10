@@ -7,10 +7,10 @@ t = 0
 sum = 0
 skipnext = True
 
+image = [["." for i in range(40)] for j in range(6)]
+
 while i < len(insts):
     t += 1
-
-
 
     if skipnext == False:
         if insts[i][0] == "addx":
@@ -22,4 +22,11 @@ while i < len(insts):
     else:
         skipnext = False
 
-print(sum)
+    x = (t % 40)
+    y = int(t / 40)
+
+    if abs(X - x) < 2:
+        image[y][x] = "#"
+        print(X, x)
+
+print("\n".join(list(map(lambda x: "".join(x), image))), "\n")
