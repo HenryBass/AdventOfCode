@@ -17,6 +17,7 @@ for i in instructions:
     i = i.split(" ")
     for j in range(int(i[1])):
         spots[int(i[5])-1].append(spots[int(i[3])-1].pop())
+    print(spots)
 
 
 output = ""
